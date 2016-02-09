@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Metadata Microservice</title>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>File Metadata Microservice <a class="btn btn-primary btn-info" href="https://github.com/programmedmikey/metadata" target=_blank>GitHub Repo</a></h3>
+      <div class="panel panel-default">
+        <div class="panel-heading">File Metadata Microservice description</div>
+        <div class="panel-body">
+          <ul>
+            <li>User can submit a FormData object that includes a file upload:
+                <form action="/upload" class="form-inline" id="form" method="POST" target="test" enctype="multipart/form-data">
+                  <fieldset class="form-group">
+                    <hr/>
+                    <div class="form-group">
+                      <input type="file" class="form-control-file" name="userFile" id="myfile"/>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="form-control btn-success" value="Submit" name="send" id="sendFile"/>
+                    </div>
+                    <input type="reset" class="form-control btn-danger" id="reset" value="Reset"/>
+                    <hr/>
+                  </fieldset>
+                </form>
+            </li>
+            <li>When user submits something, server returns the file size in bytes within the JSON response:
+              <ul>
+                <li><code>[{"when":"2016-01-28 18:53","size":"3","name":"fl-upl.test"}]</code></li>
+              </ul>
+            </li>
+            </ul>
+         </div> 
+      </div>
+      <script> $(document).ready(function(){
+          $("#form").find("#reset").click(function clearForm(){
+            $(this).parent().parent().find('input[name="userFile"]').val("");
+            return false;
+          });
+        }); </script>
+    </div>
+  </body>
+</html>
